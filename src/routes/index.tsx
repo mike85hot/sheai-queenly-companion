@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren } from "lucide-react";
+import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,11 +45,7 @@ const features = [
 ];
 
 function Logo() {
-  return (
-    <span className="flex items-center gap-2 font-serif text-2xl font-semibold text-primary">
-      <Crown className="h-6 w-6" /> SheAI
-    </span>
-  );
+  return <img src={logoAsset.url} alt="SheAI" className="h-14 w-14 object-contain" />;
 }
 
 function Index() {
