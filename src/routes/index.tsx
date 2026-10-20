@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren } from "lucide-react";
+import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,11 +45,7 @@ const features = [
 ];
 
 function Logo() {
-  return (
-    <span className="flex items-center gap-2 font-serif text-2xl font-semibold text-primary">
-      <Crown className="h-6 w-6" /> SheAI
-    </span>
-  );
+  return <img src={logoAsset.url} alt="SheAI" className="h-14 w-14 object-contain" />;
 }
 
 function Index() {
@@ -71,7 +68,7 @@ function Index() {
       <section className="bg-gradient-hero">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center">
           <div>
-            <h1 className="font-serif text-5xl leading-tight md:text-6xl">Every woman deserves her own <span className="text-primary">SheAI</span></h1>
+            <h1 className="font-serif text-5xl leading-tight md:text-6xl">Every woman deserves her own She<span className="text-accent">AI</span></h1>
             <p className="mt-5 text-xl font-medium">Predictive intelligence, built by women, for women.</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {pills.map(({ icon: I, label }) => (
