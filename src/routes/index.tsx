@@ -48,6 +48,116 @@ function Logo() {
   return <img src={logoAsset.url} alt="SheAI" className="h-14 w-14 object-contain" />;
 }
 
+const plans = [
+  {
+    icon: Shield,
+    name: "Free Account",
+    price: "$0",
+    period: "Free Forever",
+    note: "No card needed",
+    cta: "Start Free",
+    featured: false,
+    features: [
+      "Safety alarm",
+      "Safe Exit Call",
+      "911 & 5 crisis hotlines",
+      "2 trusted contacts",
+      "Manual emergency alerts",
+      "Core health & wellness",
+      "8 one-time AI credits",
+    ],
+  },
+  {
+    icon: Sparkles,
+    name: "7-Day Free Trial",
+    price: "$0",
+    period: "for 7 days",
+    note: "Full Premium access for a week",
+    cta: "Start Free Trial",
+    featured: false,
+    features: [
+      "Full access to all Premium features",
+      "4 trusted contacts",
+      "40 AI credits per day",
+      "Live location sharing",
+    ],
+  },
+  {
+    icon: Crown,
+    name: "SheAI Premium",
+    price: "$18",
+    period: "/month",
+    note: "Cancel anytime",
+    cta: "Go Premium",
+    featured: true,
+    features: [
+      "Automated emergency SMS alerts",
+      "Unlimited trusted contacts",
+      "40 daily AI credits",
+      "Live GPS Trip Watch",
+      "Welfare checks",
+      "Secret codewords",
+      "Predictive travel & location risk intelligence",
+    ],
+  },
+  {
+    icon: Check,
+    name: "Founding SheAI Pass",
+    price: "$58",
+    period: "one-time",
+    note: "Pay once, never subscribe",
+    cta: "Claim Your Pass",
+    featured: false,
+    features: [
+      "Lifetime founding member badge",
+      "Exclusive perks",
+      "No recurring subscription",
+    ],
+  },
+];
+
+const comparison = [
+  {
+    group: "Safety Tools",
+    rows: [
+      ["Siren", true, true],
+      ["Safe Exit Call", true, true],
+      ["Panic Button", "Manual", "Automated SMS"],
+      ["Walk Me Home", false, true],
+      ["Safe Arrival", "Manual check-in", "Automated welfare check"],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "Predictive AI & Location",
+    rows: [
+      ["Location risk score", false, true],
+      ["Smart routing", false, true],
+      ["Live location sharing", false, true],
+      ["Crime map", false, true],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "AI Assistants",
+    rows: [
+      ["AI chat assistants", true, true],
+      ["Daily AI credits", "8 one-time", "40 per day"],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "Health & Wellness",
+    rows: [
+      ["Core health & wellness tracking", true, true],
+      ["Personalized insights & coaching", false, true],
+    ] as [string, string | boolean, string | boolean][],
+  },
+];
+
+function Cell({ value }: { value: string | boolean }) {
+  if (value === true) return <Check className="inline h-5 w-5 text-primary" />;
+  if (value === false) return <Minus className="inline h-5 w-5 text-muted-foreground/50" />;
+  return <span className="text-xs font-semibold text-primary">{value}</span>;
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
