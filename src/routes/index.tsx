@@ -68,7 +68,7 @@ function Index() {
       <section className="bg-gradient-hero">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center">
           <div>
-            <h1 className="font-serif text-5xl leading-tight md:text-6xl">Every woman deserves her own <span className="text-primary">SheAI</span></h1>
+            <h1 className="font-serif text-5xl leading-tight md:text-6xl">Every woman deserves her own She<span className="text-accent">AI</span></h1>
             <p className="mt-5 text-xl font-medium">Predictive intelligence, built by women, for women.</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {pills.map(({ icon: I, label }) => (
