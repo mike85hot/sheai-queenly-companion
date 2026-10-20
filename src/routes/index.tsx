@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Fragment } from "react";
 import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus } from "lucide-react";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
@@ -287,8 +288,8 @@ function Index() {
               </thead>
               <tbody>
                 {comparison.map((g) => (
-                  <>
-                    <tr key={g.group} className="bg-secondary/60">
+                  <Fragment key={g.group}>
+                    <tr className="bg-secondary/60">
                       <td colSpan={3} className="p-3 font-bold uppercase tracking-wide text-xs text-primary">{g.group}</td>
                     </tr>
                     {g.rows.map(([name, free, premium]) => (
