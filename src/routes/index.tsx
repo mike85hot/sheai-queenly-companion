@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren } from "lucide-react";
+import { Fragment } from "react";
+import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus } from "lucide-react";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -46,6 +47,116 @@ const features = [
 
 function Logo() {
   return <img src={logoAsset.url} alt="SheAI" className="h-14 w-14 object-contain" />;
+}
+
+const plans = [
+  {
+    icon: Shield,
+    name: "Free Account",
+    price: "$0",
+    period: "Free Forever",
+    note: "No card needed",
+    cta: "Start Free",
+    featured: false,
+    features: [
+      "Safety alarm",
+      "Safe Exit Call",
+      "911 & 5 crisis hotlines",
+      "2 trusted contacts",
+      "Manual emergency alerts",
+      "Core health & wellness",
+      "8 one-time AI credits",
+    ],
+  },
+  {
+    icon: Sparkles,
+    name: "7-Day Free Trial",
+    price: "$0",
+    period: "for 7 days",
+    note: "Full Premium access for a week",
+    cta: "Start Free Trial",
+    featured: false,
+    features: [
+      "Full access to all Premium features",
+      "4 trusted contacts",
+      "40 AI credits per day",
+      "Live location sharing",
+    ],
+  },
+  {
+    icon: Crown,
+    name: "SheAI Premium",
+    price: "$18",
+    period: "/month",
+    note: "Cancel anytime",
+    cta: "Go Premium",
+    featured: true,
+    features: [
+      "Automated emergency SMS alerts",
+      "Unlimited trusted contacts",
+      "40 daily AI credits",
+      "Live GPS Trip Watch",
+      "Welfare checks",
+      "Secret codewords",
+      "Predictive travel & location risk intelligence",
+    ],
+  },
+  {
+    icon: Check,
+    name: "Founding SheAI Pass",
+    price: "$58",
+    period: "one-time",
+    note: "Pay once, never subscribe",
+    cta: "Claim Your Pass",
+    featured: false,
+    features: [
+      "Lifetime founding member badge",
+      "Exclusive perks",
+      "No recurring subscription",
+    ],
+  },
+];
+
+const comparison = [
+  {
+    group: "Safety Tools",
+    rows: [
+      ["Siren", true, true],
+      ["Safe Exit Call", true, true],
+      ["Panic Button", "Manual", "Automated SMS"],
+      ["Walk Me Home", false, true],
+      ["Safe Arrival", "Manual check-in", "Automated welfare check"],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "Predictive AI & Location",
+    rows: [
+      ["Location risk score", false, true],
+      ["Smart routing", false, true],
+      ["Live location sharing", false, true],
+      ["Crime map", false, true],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "AI Assistants",
+    rows: [
+      ["AI chat assistants", true, true],
+      ["Daily AI credits", "8 one-time", "40 per day"],
+    ] as [string, string | boolean, string | boolean][],
+  },
+  {
+    group: "Health & Wellness",
+    rows: [
+      ["Core health & wellness tracking", true, true],
+      ["Personalized insights & coaching", false, true],
+    ] as [string, string | boolean, string | boolean][],
+  },
+];
+
+function Cell({ value }: { value: string | boolean }) {
+  if (value === true) return <Check className="inline h-5 w-5 text-primary" />;
+  if (value === false) return <Minus className="inline h-5 w-5 text-muted-foreground/50" />;
+  return <span className="text-xs font-semibold text-primary">{value}</span>;
 }
 
 function Index() {
@@ -133,11 +244,70 @@ function Index() {
         </div>
       </section>
 
-      <section id="pricing" className="mx-auto max-w-3xl px-6 pb-24 text-center">
-        <div className="rounded-3xl bg-gradient-primary p-12 text-primary-foreground">
-          <p className="font-serif text-7xl">$0</p>
-          <p className="mt-2 text-2xl font-bold">Free Forever</p>
-          <p className="mt-3 opacity-90">Core safety stays free — the emergency hub, crisis hotlines and SOS sharing, for every woman.</p>
+      <section id="pricing" className="mx-auto max-w-6xl px-6 pb-20">
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-widest text-primary">Pricing Plans</p>
+          <h2 className="mt-3 font-serif text-4xl">Safety first, always</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Core safety stays free for every woman. Upgrade when you want SheAI watching over you around the clock.</p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {plans.map(({ icon: I, ...p }) => (
+            <div key={p.name} className={`relative flex flex-col rounded-3xl border p-7 ${p.featured ? "border-primary bg-card shadow-lg ring-2 ring-coral" : "bg-card"}`}>
+              {p.featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-coral px-4 py-1 text-xs font-bold text-coral-foreground">Most Popular</span>}
+              <div className="flex items-center gap-2">
+                <I className="h-5 w-5 text-primary" />
+                <h3 className="font-bold">{p.name}</h3>
+              </div>
+              <p className="mt-4"><span className="font-serif text-5xl">{p.price}</span> <span className="text-sm text-muted-foreground">{p.period}</span></p>
+              <p className="mt-1 text-sm font-semibold text-accent">{p.note}</p>
+              <ul className="mt-5 flex flex-1 flex-col gap-2.5 text-sm">
+                {p.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{f}</li>
+                ))}
+              </ul>
+              <button className={`mt-6 w-full rounded-full px-6 py-3 font-bold ${p.featured ? "bg-gradient-primary text-primary-foreground" : "border border-primary text-primary"}`}>{p.cta}</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="compare" className="bg-secondary py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-primary">Feature Comparison</p>
+            <h2 className="mt-3 font-serif text-4xl">Free vs. Premium</h2>
+          </div>
+          <div className="mt-10 overflow-x-auto rounded-3xl border bg-card">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b text-left">
+                  <th className="p-4 font-semibold text-muted-foreground">Feature</th>
+                  <th className="p-4 text-center font-bold">Free</th>
+                  <th className="p-4 text-center font-bold text-accent">Premium</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((g) => (
+                  <Fragment key={g.group}>
+                    <tr className="bg-secondary/60">
+                      <td colSpan={3} className="p-3 font-bold uppercase tracking-wide text-xs text-primary">{g.group}</td>
+                    </tr>
+                    {g.rows.map(([name, free, premium]) => (
+                      <tr key={name as string} className="border-t">
+                        <td className="p-4">{name}</td>
+                        <td className="p-4 text-center"><Cell value={free} /></td>
+                        <td className="p-4 text-center"><Cell value={premium} /></td>
+                      </tr>
+                    ))}
+                  </Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm font-medium text-muted-foreground">
+            <ShieldCheck className="h-5 w-5 shrink-0 text-primary" />
+            Cards handled securely by Stripe — never stored by us
+          </p>
         </div>
       </section>
 
