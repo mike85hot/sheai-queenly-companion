@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       { title: "SheAI — Every woman deserves her own AI" },
       { name: "description", content: "SheAI is a women-first predictive intelligence platform for safety, travel, health, wellness and fitness." },
       { property: "og:title", content: "SheAI — Every woman deserves her own AI" },
-      { property: "og:description", content: "Safety, travel, wellness and fitness AI built by women, for women." },
+      { property: "og:description", content: "Safety, travel, wellness and fitness AI built for women." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -69,7 +69,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center">
           <div>
             <h1 className="font-serif text-5xl leading-tight md:text-6xl">Every woman deserves her own She<span className="text-accent">AI</span></h1>
-            <p className="mt-5 text-xl font-medium">Predictive intelligence, built by women, for women.</p>
+            <p className="mt-5 text-xl font-medium">Predictive intelligence. Built for Women.</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {pills.map(({ icon: I, label }) => (
                 <span key={label} className="flex items-center gap-1.5 rounded-full border bg-card px-3 py-1.5 text-sm font-medium"><I className="h-4 w-4 text-primary" />{label}</span>
@@ -108,7 +108,7 @@ function Index() {
 
       <section id="safety" className="bg-secondary py-20">
         <div className="mx-auto max-w-6xl px-6 text-center">
-          <h2 className="font-serif text-4xl">Built for women, by women</h2>
+          <h2 className="font-serif text-4xl">Built for Women</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {pillars.map((p) => (
               <div key={p.t} className="rounded-3xl bg-card p-8">
