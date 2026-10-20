@@ -299,7 +299,7 @@ function Index() {
                         <td className="p-4 text-center"><Cell value={premium} /></td>
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
