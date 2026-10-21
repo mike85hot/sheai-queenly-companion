@@ -14,13 +14,14 @@ const motionComponentCache = new Map<
   React.ComponentType<MotionHTMLProps>
 >();
 
-const getMotionComponent = (element: keyof JSX.IntrinsicElements) => {
-  let component = motionComponentCache.get(element);
-  if (!component) {
-    component = motion.create(element);
-    motionComponentCache.set(element, component);
-  }
-  return component;
+const getMotionComponent = (
+  element: keyof JSX.IntrinsicElements
+): React.ComponentType<MotionHTMLProps> => {
+  const cached = motionComponentCache.get(element);
+  if (cached) return cached;
+  const created = motion.create(element) as React.ComponentType<MotionHTMLProps>;
+  motionComponentCache.set(element, created);
+  return created;
 };
 
 export interface TextShimmerProps {
