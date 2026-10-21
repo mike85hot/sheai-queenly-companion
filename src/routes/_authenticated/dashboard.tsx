@@ -24,9 +24,9 @@ function Dashboard() {
     { to: "/sos", title: "SOS", desc: "911, siren, Safe Exit Call, hotlines", icon: Siren, tone: "bg-destructive text-destructive-foreground" },
     { to: "/trip", title: "Walk Me Home", desc: "Share live location & Safe Arrival timer", icon: RouteIcon, tone: "bg-primary text-primary-foreground" },
     { to: "/contacts", title: "Trusted contacts", desc: "Who gets your alerts", icon: Users, tone: "bg-secondary" },
-    { to: "/assistant", title: "Safety & Travel AI", desc: "Ask anything, anytime", icon: Sparkles, tone: "bg-secondary", search: { mode: "safety" } },
-    { to: "/assistant", title: "Meal Planner", desc: "Meals + grocery list", icon: Salad, tone: "bg-secondary", search: { mode: "meals" } },
-    { to: "/assistant", title: "Fitness & Cycle Coach", desc: "Workouts for today's energy", icon: Dumbbell, tone: "bg-secondary", search: { mode: "fitness" } },
+    { to: "/assistant", title: "Safety & Travel AI", desc: "Ask anything, anytime", icon: Sparkles, tone: "bg-secondary", mode: "safety" },
+    { to: "/assistant", title: "Meal Planner", desc: "Meals + grocery list", icon: Salad, tone: "bg-secondary", mode: "meals" },
+    { to: "/assistant", title: "Fitness & Cycle Coach", desc: "Workouts for today's energy", icon: Dumbbell, tone: "bg-secondary", mode: "fitness" },
   ] as const;
   return (
     <div>
@@ -43,13 +43,15 @@ function Dashboard() {
         )}
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tiles.map((t) => (
-          <Link key={t.title} to={t.to} search={"search" in t ? t.search : undefined} className={`rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-lg ${t.tone}`}>
-            <t.icon className="h-8 w-8" />
-            <p className="mt-4 text-xl font-semibold">{t.title}</p>
-            <p className="text-sm opacity-80">{t.desc}</p>
-          </Link>
-        ))}
+        {tiles.map((t) => {
+          const inner = (<><t.icon className="h-8 w-8" /><p className="mt-4 text-xl font-semibold">{t.title}</p><p className="text-sm opacity-80">{t.desc}</p></>);
+          const cls = `rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-lg ${t.tone}`;
+          return "mode" in t ? (
+            <Link key={t.title} to="/assistant" search={{ mode: t.mode }} className={cls}>{inner}</Link>
+          ) : (
+            <Link key={t.title} to={t.to} className={cls}>{inner}</Link>
+          );
+        })}
       </div>
     </div>
   );

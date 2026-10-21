@@ -40,7 +40,7 @@ function TripPage() {
   async function start(e: React.FormEvent) {
     e.preventDefault();
     const { error } = await supabase.from("trips").insert({ destination: dest, expected_arrival: new Date(Date.now() + mins * 60000).toISOString() });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: ["trip"] });
   }
 
@@ -98,7 +98,7 @@ function ActiveTrip({ trip, phones, safe, duress, onDone }: { trip: Trip; phones
     if (!overdue || flagged.current) return;
     flagged.current = true;
     supabase.from("trips").update({ status: "overdue" }).eq("id", trip.id).then();
-    supabase.from("alerts").insert({ trip_id: trip.id, kind: "overdue", message: `Missed Safe Arrival to ${trip.destination}`, lat: pos?.lat, lng: pos?.lng }).then();
+    supabase.from("alerts").insert({ trip_id: trip.id, kind: "overdue", message: `Missed Safe Arrival to ${trip.destination}`, lat: pos?.lat ?? null, lng: pos?.lng ?? null }).then();
     navigator.vibrate?.([500, 200, 500]);
   }, [overdue, trip.id, trip.destination, pos]);
 
@@ -112,10 +112,10 @@ function ActiveTrip({ trip, phones, safe, duress, onDone }: { trip: Trip; phones
     let status = "arrived";
     if (hasCodes) {
       if (duress && code === duress) status = "duress";
-      else if (code !== safe) return toast.error("That codeword didn't match.");
+      else if (code !== safe) { toast.error("That codeword didn't match."); return; }
     }
     await supabase.from("trips").update({ status, ended_at: new Date().toISOString() }).eq("id", trip.id);
-    if (status === "duress") await supabase.from("alerts").insert({ trip_id: trip.id, kind: "duress", message: "Duress codeword used", lat: pos?.lat, lng: pos?.lng });
+    if (status === "duress") await supabase.from("alerts").insert({ trip_id: trip.id, kind: "duress", message: "Duress codeword used", lat: pos?.lat ?? null, lng: pos?.lng ?? null });
     toast.success("Trip ended. Glad you're safe.");
     onDone();
   }

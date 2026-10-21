@@ -30,12 +30,12 @@ function ProfilePage() {
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
-    if (form.safe_code && form.safe_code === form.duress_code) return toast.error("Safe and duress codewords must be different.");
+    if (form.safe_code && form.safe_code === form.duress_code) { toast.error("Safe and duress codewords must be different."); return; }
     const { error } = await supabase
       .from("profiles")
       .update({
-        display_name: form.display_name, blood_type: form.blood_type, allergies: form.allergies,
-        home_address: form.home_address, safe_code: form.safe_code || null, duress_code: form.duress_code || null,
+        display_name: form.display_name ?? null, blood_type: form.blood_type ?? null, allergies: form.allergies ?? null,
+        home_address: form.home_address ?? null, safe_code: form.safe_code || null, duress_code: form.duress_code || null,
       })
       .eq("id", profile.data!.id);
     if (error) toast.error(error.message);
@@ -43,7 +43,7 @@ function ProfilePage() {
   }
   async function startTrial() {
     const { error } = await supabase.rpc("start_free_trial");
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Your 7-day trial has started");
     qc.invalidateQueries();
   }

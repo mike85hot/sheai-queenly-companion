@@ -36,9 +36,9 @@ function ContactsPage() {
 
   async function add(e: React.FormEvent) {
     e.preventDefault();
-    if (!/^\+?[\d\s().-]{7,}$/.test(f.phone)) return toast.error("Enter a valid phone number");
+    if (!/^\+?[\d\s().-]{7,}$/.test(f.phone)) { toast.error("Enter a valid phone number"); return; }
     const { error } = await supabase.from("trusted_contacts").insert({ name: f.name, phone: f.phone, relationship: f.relationship || null });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setF({ name: "", phone: "", relationship: "" });
     qc.invalidateQueries({ queryKey: ["contacts"] });
   }
