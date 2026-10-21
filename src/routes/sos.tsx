@@ -210,7 +210,7 @@ function SafeExitCard() {
         <div className="flex gap-16">
           <button aria-label="Decline" onClick={() => { ringRef.current?.(); setPhase("idle"); }} className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive text-destructive-foreground"><PhoneOff className="h-7 w-7" /></button>
           {phase === "ringing" && (
-            <button aria-label="Answer" onClick={() => { ringRef.current?.(); setPhase("live"); }} className="flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-success text-primary-foreground"><Phone className="h-7 w-7" /></button>
+            <button aria-label="Answer" onClick={() => { ringRef.current?.(); setPhase("live"); }} className="flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-accent text-accent-foreground"><Phone className="h-7 w-7" /></button>
           )}
         </div>
       </div>
