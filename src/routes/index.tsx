@@ -191,7 +191,7 @@ function Index() {
           </div>
           <div className="rounded-3xl border bg-card p-8 shadow-sm">
             <a href="/auth" className="block w-full rounded-full border border-primary px-6 py-3 text-center font-semibold text-primary">Create a Free SheAI Account</a>
-            <p className="mt-6 text-center"><b>Coming soon 👑</b> SheAI is launching soon — join us as we bring the next generation of predictive intelligence to women first.</p>
+            <p className="mt-6 text-center"><b>Live now 👑</b> SheAI's free safety tools are ready to use today — no download, no card needed.</p>
             <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 font-bold text-primary-foreground"><Crown className="h-5 w-5" />Reserve Your Early Access</button>
             <p className="mt-6 flex gap-2 rounded-2xl border p-4 text-sm"><Check className="h-4 w-4 shrink-0 text-primary" />Early app access, founding member perks and an exclusive launch discount.</p>
           </div>
