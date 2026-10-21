@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- Signed-in pages live under `src/routes/_authenticated/` and share `AppShell`; SOS (`/sos`) and shared trip links (`/t/$token`) stay public so they work without login.
+- Plan limits (trusted contacts, AI credits, trial) are enforced in the database (triggers / SECURITY DEFINER functions), never only in the UI — users cannot edit plan or credit columns.
+- AI chat streams from the `/api/chat` server route, which verifies the bearer token and calls `consume_ai_credit` before any model call.
+- Shared trips are read only through `get_shared_trip(token)`; never add an anon policy on `trips`.
