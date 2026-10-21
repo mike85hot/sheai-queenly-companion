@@ -170,9 +170,9 @@ function Index() {
           ))}
         </nav>
         <div className="flex gap-2">
-          <a href="tel:911" className="flex items-center gap-1 rounded-full bg-destructive px-4 py-2 text-sm font-bold text-destructive-foreground"><Phone className="h-4 w-4" />911</a>
-          <button className="hidden items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground sm:flex"><MapPin className="h-4 w-4" />Share Location</button>
-          <button className="rounded-full border border-primary px-4 py-2 text-sm text-primary">Login</button>
+          <a href="/sos" className="flex items-center gap-1 rounded-full bg-destructive px-4 py-2 text-sm font-bold text-destructive-foreground"><Phone className="h-4 w-4" />SOS</a>
+          <a href="/trip" className="hidden items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground sm:flex"><MapPin className="h-4 w-4" />Share Location</a>
+          <a href="/auth" className="rounded-full border border-primary px-4 py-2 text-sm text-primary">Login</a>
         </div>
       </header>
 
@@ -190,7 +190,7 @@ function Index() {
             <p className="mt-3 text-muted-foreground">An AI built to protect, elevate and empower you — because your safety, health, balance and dreams deserve the smartest support.</p>
           </div>
           <div className="rounded-3xl border bg-card p-8 shadow-sm">
-            <button className="w-full rounded-full border border-primary px-6 py-3 font-semibold text-primary">Create a Free SheAI Account</button>
+            <a href="/auth" className="block w-full rounded-full border border-primary px-6 py-3 text-center font-semibold text-primary">Create a Free SheAI Account</a>
             <p className="mt-6 text-center"><b>Coming soon 👑</b> SheAI is launching soon — join us as we bring the next generation of predictive intelligence to women first.</p>
             <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 font-bold text-primary-foreground"><Crown className="h-5 w-5" />Reserve Your Early Access</button>
             <p className="mt-6 flex gap-2 rounded-2xl border p-4 text-sm"><Check className="h-4 w-4 shrink-0 text-primary" />Early app access, founding member perks and an exclusive launch discount.</p>
