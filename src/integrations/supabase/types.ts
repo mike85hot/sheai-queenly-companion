@@ -14,13 +14,174 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          created_at: string
+          id: string
+          kind: string
+          lat: number | null
+          lng: number | null
+          message: string | null
+          trip_id: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kind: string
+          lat?: number | null
+          lng?: number | null
+          message?: string | null
+          trip_id?: string | null
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kind?: string
+          lat?: number | null
+          lng?: number | null
+          message?: string | null
+          trip_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          ai_credits_day: string
+          ai_credits_used: number
+          allergies: string | null
+          blood_type: string | null
+          created_at: string
+          display_name: string | null
+          duress_code: string | null
+          home_address: string | null
+          id: string
+          plan: string
+          safe_code: string | null
+          trial_ends_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          ai_credits_day?: string
+          ai_credits_used?: number
+          allergies?: string | null
+          blood_type?: string | null
+          created_at?: string
+          display_name?: string | null
+          duress_code?: string | null
+          home_address?: string | null
+          id: string
+          plan?: string
+          safe_code?: string | null
+          trial_ends_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ai_credits_day?: string
+          ai_credits_used?: number
+          allergies?: string | null
+          blood_type?: string | null
+          created_at?: string
+          display_name?: string | null
+          duress_code?: string | null
+          home_address?: string | null
+          id?: string
+          plan?: string
+          safe_code?: string | null
+          trial_ends_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      trips: {
+        Row: {
+          created_at: string
+          destination: string
+          ended_at: string | null
+          expected_arrival: string
+          id: string
+          last_lat: number | null
+          last_lng: number | null
+          last_ping_at: string | null
+          share_token: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          destination: string
+          ended_at?: string | null
+          expected_arrival: string
+          id?: string
+          last_lat?: number | null
+          last_lng?: number | null
+          last_ping_at?: string | null
+          share_token?: string
+          status?: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          destination?: string
+          ended_at?: string | null
+          expected_arrival?: string
+          id?: string
+          last_lat?: number | null
+          last_lng?: number | null
+          last_ping_at?: string | null
+          share_token?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      trusted_contacts: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          phone: string
+          relationship: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          phone: string
+          relationship?: string | null
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          phone?: string
+          relationship?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      ai_credit_status: { Args: never; Returns: Json }
+      consume_ai_credit: { Args: never; Returns: Json }
+      effective_plan: { Args: { _uid: string }; Returns: string }
+      get_shared_trip: { Args: { _token: string }; Returns: Json }
+      start_free_trial: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
