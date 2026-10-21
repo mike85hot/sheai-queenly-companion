@@ -170,7 +170,7 @@ function SafeExitCard() {
     o2.start();
     navigator.vibrate?.([800, 400, 800, 400, 800]);
     ringRef.current = () => ctx.close();
-    return () => ctx.close();
+    return () => { ctx.close(); };
   }, [phase]);
 
   useEffect(() => {
