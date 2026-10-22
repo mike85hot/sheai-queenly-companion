@@ -14,3 +14,5 @@
 - Plan limits (trusted contacts, AI credits, trial) are enforced in the database (triggers / SECURITY DEFINER functions), never only in the UI — users cannot edit plan or credit columns.
 - AI chat streams from the `/api/chat` server route, which verifies the bearer token and calls `consume_ai_credit` before any model call.
 - Shared trips are read only through `get_shared_trip(token)`; never add an anon policy on `trips`.
+- Emergency contacts live in a source-linked country directory; require country confirmation before dialing and never infer physical location from language alone.
+- Journey sharing uses shared message helpers for SMS and WhatsApp; messages are user-sent, never represented as automatic dispatch.
