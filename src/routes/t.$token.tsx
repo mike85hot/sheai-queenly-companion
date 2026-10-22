@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/t/$token")({
   ssr: false,
@@ -48,7 +49,7 @@ function SharedTrip() {
               <p className="font-serif text-4xl font-semibold">{label}</p>
               <p className="mt-2 text-sm opacity-80">Expected by {new Date(t.expected_arrival).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}{t.last_ping_at && ` · last seen ${new Date(t.last_ping_at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`}</p>
             </div>
-            {help && <a href="tel:911" className="mt-4 block rounded-full bg-accent py-4 text-center font-bold text-accent-foreground">Call 911</a>}
+            {help && <Button asChild className="mt-4 h-auto w-full whitespace-normal py-4"><a href="/sos">Emergency contacts — choose the person's country</a></Button>}
             {t.last_lat != null && t.last_lng != null && (
               <div className="mt-4 overflow-hidden rounded-3xl border">
                 <iframe title="Live location" className="h-96 w-full" src={`https://www.openstreetmap.org/export/embed.html?bbox=${t.last_lng - 0.01},${t.last_lat - 0.006},${t.last_lng + 0.01},${t.last_lat + 0.006}&layer=mapnik&marker=${t.last_lat},${t.last_lng}`} />

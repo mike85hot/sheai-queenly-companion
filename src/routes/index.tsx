@@ -61,7 +61,7 @@ const plans = [
     features: [
       "Safety alarm",
       "Safe Exit Call",
-      "911 & 5 crisis hotlines",
+      "Country-specific emergency contacts",
       "2 trusted contacts",
       "Manual emergency alerts",
       "Core health & wellness",
