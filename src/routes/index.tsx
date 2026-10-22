@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Fragment } from "react";
 import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus, Globe } from "lucide-react";
 import { countriesByRegion, emergencyCountries } from "@/lib/emergency-contacts";
+import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
