@@ -2,28 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Phone, PhoneOff, Siren, MessageSquare, ArrowLeft, Volume2 } from "lucide-react";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
+import { CountryEmergencyContacts } from "@/components/CountryEmergencyContacts";
 
 export const Route = createFileRoute("/sos")({
   head: () => ({
     meta: [
       { title: "SOS — Siren, Safe Exit Call & Hotlines | SheAI" },
-      { name: "description", content: "One-tap 911, crisis hotlines, a loud siren with strobe, and a Safe Exit fake call." },
+      { name: "description", content: "Country-specific emergency contacts, crisis support, a loud siren with strobe, and a Safe Exit fake call." },
       { property: "og:title", content: "SOS — SheAI" },
-      { property: "og:description", content: "One-tap 911, crisis hotlines, siren with strobe, and a Safe Exit fake call." },
+      { property: "og:description", content: "Country-specific emergency contacts, crisis support, siren with strobe, and a Safe Exit fake call." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
   }),
   component: SosPage,
 });
-
-const hotlines = [
-  { name: "National Domestic Violence Hotline", tel: "18007997233", label: "1-800-799-7233", sms: "88788", smsBody: "START" },
-  { name: "988 Suicide & Crisis Lifeline", tel: "988", label: "988", sms: "988" },
-  { name: "Crisis Text Line", label: "Text HOME to 741741", sms: "741741", smsBody: "HOME" },
-  { name: "RAINN Sexual Assault Hotline", tel: "18006564673", label: "1-800-656-4673" },
-  { name: "Love is Respect (dating abuse)", tel: "18663319474", label: "1-866-331-9474", sms: "22522", smsBody: "LOVEIS" },
-];
 
 function SosPage() {
   return (
@@ -33,26 +26,9 @@ function SosPage() {
         <img src={logoAsset.url} alt="SheAI" className="h-10 w-10" />
       </header>
       <main className="mx-auto grid max-w-3xl gap-6 px-4">
-        <a href="tel:911" className="flex items-center justify-center gap-3 rounded-3xl bg-destructive py-8 text-3xl font-bold text-destructive-foreground shadow-lg">
-          <Phone className="h-8 w-8" />Call 911
-        </a>
+        <CountryEmergencyContacts />
         <SirenCard />
         <SafeExitCard />
-        <section className="rounded-3xl border bg-card p-6">
-          <h2 className="font-serif text-2xl font-semibold">Crisis hotlines</h2>
-          <p className="text-sm text-muted-foreground">Free, confidential, 24/7 (US).</p>
-          <ul className="mt-4 grid gap-3">
-            {hotlines.map((h) => (
-              <li key={h.name} className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-secondary p-4">
-                <div><p className="font-semibold">{h.name}</p><p className="text-sm text-muted-foreground">{h.label}</p></div>
-                <div className="flex gap-2">
-                  {h.tel && <a href={`tel:${h.tel}`} className="flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"><Phone className="h-4 w-4" />Call</a>}
-                  {h.sms && <a href={`sms:${h.sms}${h.smsBody ? `?&body=${h.smsBody}` : ""}`} className="flex items-center gap-1 rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary"><MessageSquare className="h-4 w-4" />Text</a>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
       </main>
     </div>
   );
