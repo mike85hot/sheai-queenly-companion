@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment } from "react";
-import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus } from "lucide-react";
+import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus, Globe } from "lucide-react";
+import { countriesByRegion, emergencyCountries } from "@/lib/emergency-contacts";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SheAI — Every woman deserves her own AI" },
-      { name: "description", content: "SheAI is a women-first predictive intelligence platform for safety, travel, health, wellness and fitness." },
+      { name: "description", content: "SheAI is a women-first safety and wellness platform — free SOS, Safe Exit Call and Walk Me Home, with verified emergency contacts in 9 countries." },
       { property: "og:title", content: "SheAI — Every woman deserves her own AI" },
-      { property: "og:description", content: "Safety, travel, wellness and fitness AI built for women." },
+      { property: "og:description", content: "Free safety tools plus verified emergency contacts in 9 countries." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -198,6 +199,15 @@ function Index() {
         </div>
       </section>
 
+      <section aria-label="Countries with verified emergency contacts" className="border-y bg-card">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-5 gap-y-2 px-6 py-4 text-sm">
+          <span className="font-bold uppercase tracking-widest text-primary">Verified in {emergencyCountries.length} countries</span>
+          {[...emergencyCountries].sort((a, b) => a.name.localeCompare(b.name)).map((c) => (
+            <a key={c.code} href="/sos" className="font-medium text-muted-foreground transition-colors hover:text-primary">{c.name}</a>
+          ))}
+        </div>
+      </section>
+
       <section id="about" className="mx-auto max-w-4xl px-6 py-20 text-center">
         <p className="text-sm font-bold uppercase tracking-widest text-primary">What SheAI is</p>
         <h2 className="mt-3 font-serif text-4xl">A women-first predictive intelligence platform</h2>
@@ -242,6 +252,35 @@ function Index() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section id="coverage" className="mx-auto max-w-6xl px-6 py-20">
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-widest text-primary">Where SheAI works today</p>
+          <h2 className="mt-3 font-serif text-4xl">Verified in {emergencyCountries.length} countries, usable anywhere</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">SheAI runs in any browser. These are the countries where we've checked official sources and verified exactly who you call.</p>
+        </div>
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          {countriesByRegion().map(({ region, countries }) => (
+            <div key={region}>
+              <h3 className="flex items-center gap-2 font-serif text-2xl text-primary"><Globe className="h-5 w-5" />{region}</h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {countries.map((c) => (
+                  <div key={c.code} className="rounded-3xl border bg-card p-5">
+                    <h4 className="font-bold">{c.name}</h4>
+                    <p className="mt-3 text-sm font-semibold text-primary">{c.emergency.map((e) => e.label).join("  ·  ")}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{c.hotlines.length > 0 ? `${c.hotlines.length} crisis line${c.hotlines.length > 1 ? "s" : ""}` : "Emergency lines only so far"}</p>
+                    <a href="/sos" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline">Open these contacts</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-center text-sm font-medium text-muted-foreground">
+          <ShieldCheck className="h-5 w-5 shrink-0 text-primary" />
+          Don't see your country? SheAI still works there — the SOS page points you to your local emergency number and a global helpline directory.
+        </p>
       </section>
 
       <section id="pricing" className="mx-auto max-w-6xl px-6 pb-20">
