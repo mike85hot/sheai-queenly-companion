@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { countryFromLocale, emergencyCountries } from "@/lib/emergency-contacts";
+import { countriesByRegion, countryFromLocale, emergencyCountries } from "@/lib/emergency-contacts";
 
 describe("Country-specific emergency dialing", () => {
   it.each([
@@ -21,5 +21,11 @@ describe("Country-specific emergency dialing", () => {
     const contacts = emergencyCountries.find((c) => c.code === "ZA")?.emergency;
     expect(contacts?.find((c) => c.name === "Police")?.tel).toBe("10111");
     expect(contacts?.find((c) => c.name === "Ambulance")?.tel).toBe("10177");
+  });
+  it("groups every verified country under a region for the landing page", () => {
+    const groups = countriesByRegion();
+    expect(groups.map((g) => g.region)).toEqual(["Africa", "Asia", "Europe", "Americas"]);
+    expect(groups.reduce((n, g) => n + g.countries.length, 0)).toBe(emergencyCountries.length);
+    expect(groups.find((g) => g.region === "Africa")?.countries.map((c) => c.name)).toEqual(["Kenya", "Nigeria", "South Africa"]);
   });
 });
