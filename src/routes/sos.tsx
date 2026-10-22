@@ -73,7 +73,7 @@ function SirenCard() {
       clearInterval(strobe);
       osc.stop();
       osc2.stop();
-      ctx.close();
+      if (ctx.state !== "closed") void ctx.close().catch(() => {});
       setFlash(false);
     };
     setOn(true);
@@ -145,8 +145,11 @@ function SafeExitCard() {
     o1.start();
     o2.start();
     navigator.vibrate?.([800, 400, 800, 400, 800]);
-    ringRef.current = () => ctx.close();
-    return () => { ctx.close(); };
+    const stopRing = () => {
+      if (ctx.state !== "closed") void ctx.close().catch(() => {});
+    };
+    ringRef.current = stopRing;
+    return stopRing;
   }, [phase]);
 
   useEffect(() => {
