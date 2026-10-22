@@ -5,6 +5,8 @@ import { toast } from "sonner";
 import { MapPin, Share2, MessageSquare, ShieldCheck, AlertTriangle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { fetchProfile } from "@/hooks/use-session";
+import { Button } from "@/components/ui/button";
+import { tripShareMessage, whatsappTripUrl } from "@/lib/trip-sharing";
 
 export const Route = createFileRoute("/_authenticated/trip")({
   head: () => ({
@@ -65,10 +67,13 @@ function ActiveTrip({ trip, phones, safe, duress, onDone }: { trip: Trip; phones
   const [now, setNow] = useState(Date.now());
   const [code, setCode] = useState("");
   const [geoErr, setGeoErr] = useState<string | null>(null);
-  const [pos, setPos] = useState<{ lat: number; lng: number } | null>(trip.last_lat != null ? { lat: trip.last_lat, lng: trip.last_lng! } : null);
+  const [pos, setPos] = useState<{ lat: number; lng: number } | null>(trip.last_lat != null && trip.last_lng != null ? { lat: trip.last_lat, lng: trip.last_lng } : null);
   const lastSent = useRef(0);
   const flagged = useRef(trip.status === "overdue");
-  const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/t/${trip.share_token}` : "";
+  const [shareUrl, setShareUrl] = useState("");
+  useEffect(() => {
+    setShareUrl(`${window.location.origin}/t/${trip.share_token}`);
+  }, [trip.share_token]);
   const left = Math.round((new Date(trip.expected_arrival).getTime() - now) / 1000);
   const overdue = left <= 0;
 
@@ -102,8 +107,8 @@ function ActiveTrip({ trip, phones, safe, duress, onDone }: { trip: Trip; phones
     navigator.vibrate?.([500, 200, 500]);
   }, [overdue, trip.id, trip.destination, pos]);
 
-  const smsBody = encodeURIComponent(`I'm on my way to ${trip.destination}. Follow my trip live: ${shareUrl}`);
-  const helpBody = encodeURIComponent(`I haven't arrived at ${trip.destination} and may need help. My live location: ${shareUrl}`);
+  const smsBody = encodeURIComponent(tripShareMessage(trip.destination, shareUrl));
+  const helpBody = encodeURIComponent(tripShareMessage(trip.destination, shareUrl, true));
   const smsTo = phones.join(",");
 
   async function finish(e: React.FormEvent) {
@@ -130,14 +135,22 @@ function ActiveTrip({ trip, phones, safe, duress, onDone }: { trip: Trip; phones
         <p className="text-sm opacity-80">{overdue ? "You're past your arrival time" : "until Safe Arrival check-in"}</p>
       </div>
       {overdue && (
-        <a href={`sms:${smsTo}?&body=${helpBody}`} className="flex items-center justify-center gap-2 rounded-full bg-accent py-4 font-bold text-accent-foreground"><AlertTriangle className="h-5 w-5" />Alert my trusted contacts now</a>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <Button asChild className="h-auto whitespace-normal bg-accent py-4 text-accent-foreground"><a href={`sms:${smsTo}?&body=${helpBody}`}><AlertTriangle />Alert contacts by text</a></Button>
+          <Button asChild className="h-auto whitespace-normal py-4"><a href={whatsappTripUrl(trip.destination, shareUrl, true)} target="_blank" rel="noopener noreferrer"><MessageSquare />Ask for help on WhatsApp</a></Button>
+        </div>
       )}
       <div className="rounded-3xl border bg-card p-6">
         <p className="flex items-center gap-2 font-semibold"><MapPin className="h-5 w-5 text-accent" />{pos ? `Live location on · ${pos.lat.toFixed(4)}, ${pos.lng.toFixed(4)}` : geoErr ?? "Finding your location…"}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <a href={`sms:${smsTo}?&body=${smsBody}`} className="flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"><MessageSquare className="h-4 w-4" />Text link to {phones.length || "my"} contacts</a>
-          <button onClick={() => { navigator.clipboard.writeText(shareUrl); toast.success("Link copied"); }} className="flex items-center gap-1 rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary"><Share2 className="h-4 w-4" />Copy share link</button>
+          <Button asChild disabled={!shareUrl}><a href={whatsappTripUrl(trip.destination, shareUrl)} target="_blank" rel="noopener noreferrer"><MessageSquare />Share to WhatsApp</a></Button>
+          <Button variant="outline" disabled={!shareUrl} onClick={async () => {
+            try { await navigator.clipboard.writeText(shareUrl); toast.success("Link copied"); }
+            catch { toast.error("Couldn't copy the link. Try WhatsApp or text instead."); }
+          }}><Share2 />Copy share link</Button>
         </div>
+        <p className="mt-3 text-xs text-muted-foreground">Choose a recipient and send in WhatsApp or your messaging app. Alerts are not sent automatically. Anyone with this link can see your trip.</p>
       </div>
       <form onSubmit={finish} className="grid gap-3 rounded-3xl border bg-card p-6">
         <p className="flex items-center gap-2 font-semibold"><ShieldCheck className="h-5 w-5 text-primary" />I've arrived safely</p>
