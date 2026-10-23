@@ -22,7 +22,7 @@ function Dashboard() {
   const credits = useQuery({ queryKey: ["credits"], queryFn: fetchCredits });
   const tiles = [
     { to: "/sos", title: "SOS", desc: "Local emergency contacts, siren & Safe Exit Call", icon: Siren, tone: "bg-destructive text-destructive-foreground" },
-    { to: "/trip", title: "Walk Me Home", desc: "Share live location & Safe Arrival timer", icon: RouteIcon, tone: "bg-primary text-primary-foreground" },
+    { to: "/trip", title: "Walk Me Home", desc: "Journey check, live location & Safe Arrival timer", icon: RouteIcon, tone: "bg-primary text-primary-foreground" },
     { to: "/contacts", title: "Trusted contacts", desc: "Who gets your alerts", icon: Users, tone: "bg-secondary" },
     { to: "/assistant", title: "Safety & Travel AI", desc: "Ask anything, anytime", icon: Sparkles, tone: "bg-secondary", mode: "safety" },
     { to: "/assistant", title: "Meal Planner", desc: "Meals + grocery list", icon: Salad, tone: "bg-secondary", mode: "meals" },

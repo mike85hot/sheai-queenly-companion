@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment } from "react";
-import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus, Globe } from "lucide-react";
+import { Shield, Plane, Heart, Dumbbell, Sparkles, Phone, MapPin, Crown, Check, ShoppingBag, Utensils, Hotel, Siren, ShieldCheck, Minus, Globe, Radar } from "lucide-react";
 import { countriesByRegion, emergencyCountries } from "@/lib/emergency-contacts";
 import logoAsset from "@/assets/sheai-logo.png.asset.json";
 
@@ -42,7 +42,8 @@ const features = [
   { icon: Utensils, t: "Smart Meal Planning", d: "Recipes and a shoppable grocery list from what you crave." },
   { icon: ShoppingBag, t: "Smart Shopping", d: "Curated products, picked for you." },
   { icon: Dumbbell, t: "Fitness & Wellness Coach", d: "Workouts, nutrition and progress with personal insights." },
-  { icon: Hotel, t: "Backup Hotel Safety Net", d: "Find and book the safest nearby hotel when plans fall through." },
+  { icon: Radar, t: "Journey Risk Check", d: "A 30-second pre-trip check of time, transport and company — with what to do about it." },
+  { icon: Hotel, t: "Backup Hotel Safety Net", d: "Find nearby hotels and guest houses on a map when plans fall through, plus a check-in safety checklist." },
   { icon: Siren, t: "Emergency SOS", d: "One tap shares your location with trusted contacts — only in that moment." },
 ];
 

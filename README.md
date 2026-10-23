@@ -14,10 +14,12 @@ SheAI brings practical safety tools, consent-based journey sharing and AI-assist
 | International directory | Nigeria, Kenya, South Africa, India, Pakistan, Philippines, United Kingdom, United States and Canada; some services have regional or device restrictions |
 | Trusted contacts | Account-based contact management with database-enforced plan limits |
 | Walk Me Home | Browser location updates, arrival timer, shared trip link, safe/duress codewords and user-initiated SMS/WhatsApp sharing |
+| Journey check | Rule-based pre-trip contextual checklist (time, transport, company, battery) with suggested safety actions; it is not crime-data or AI risk prediction |
+| Backup hotel safety net | Nearby hotels and guest houses from OpenStreetMap data with a hotel check-in checklist; listing and booking are not provided |
 | AI assistants | Safety/travel, meals and fitness/cycle guidance with database-enforced credit accounting |
 | Accounts | Sign-in and emergency profile details |
 
-**Not implemented:** automatic SMS dispatch, predictive risk scoring, crime/incident mapping, backup hotel booking, offline service-worker support and paid checkout/subscription integration. Marketing prices do not establish payment functionality. The app does not contact emergency responders automatically, and browser tracking is not guaranteed when a device is locked, offline or suspends the page. AI guidance is not medical advice or an emergency service.
+**Not implemented:** automatic SMS dispatch, AI-based or crime-data risk prediction, crime/incident mapping, hotel listing or booking, offline service-worker support and paid checkout/subscription integration. Marketing prices do not establish payment functionality. The app does not contact emergency responders automatically, and browser tracking is not guaranteed when a device is locked, offline or suspends the page. AI guidance is not medical advice or an emergency service.
 
 ## Development
 

@@ -14,7 +14,7 @@ Source: [official UNICEF call](https://www.unicef.org/innovation/FemTechCall), r
 
 The closest match is **Pillar 3: Mental wellbeing, safety and protection**, which includes gender-based violence, safe reporting, information and referrals. Position SheAI as browser-based safety support reducing barriers to help, with AI-assisted information and everyday well-being. Be clear that the AI does not currently detect violence or predict risk and that the platform is not a clinical mental-health intervention.
 
-Evidence available in the current source includes a public SOS experience, country-confirmed emergency directory, simulated Safe Exit Call, account-based journey sharing, trusted contacts and AI assistant modes. Automated SMS dispatch, offline PWA support, predictive risk, clinical validation and documented population-level outcomes are not established.
+Evidence available in the current source includes a public SOS experience, country-confirmed emergency directory, simulated Safe Exit Call, account-based journey sharing, trusted contacts, AI assistant modes, a rule-based pre-trip journey check and an OpenStreetMap-based nearby-lodging finder with a hotel check-in checklist. Automated SMS dispatch, offline PWA support, AI-based or crime-data risk prediction, clinical validation and documented population-level outcomes are not established.
 
 ## Required confirmations and evidence
 
