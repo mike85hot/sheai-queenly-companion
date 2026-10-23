@@ -1,6 +1,7 @@
 # SheAI Roadmap
 - [x] Open-source release preparation: MIT license, contribution and safety documentation, release checklist
-- [ ] Publish public source repository (requires owner GitHub action and release review)
+- [x] Publish public source repository: https://github.com/mike85hot/sheai-queenly-companion (MIT; history credential scan and 16 tests checked)
+- [ ] Confirm contributor/logo redistribution rights (requires owner confirmation)
 - [x] Review UNICEF FemTech call and document fit, deadline and application requirements
 - [ ] Confirm UNICEF applicant eligibility (requires company registration country/status and application-form review)
 - [x] International free access: verified country emergency selector and WhatsApp journey sharing

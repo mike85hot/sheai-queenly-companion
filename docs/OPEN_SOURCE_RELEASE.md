@@ -10,6 +10,16 @@
 
 ## Owner actions before publication
 
+### Release verification — 23 October 2026
+
+- Public repository: https://github.com/mike85hot/sheai-queenly-companion, confirmed through GitHub's API.
+- GitHub had one branch (`main`) and no tags at the initial review. Its current commit was included in the locally audited history.
+- Gitleaks scanned all 55 local historical commits with redacted output. Two warnings were limited to `.env`; inspection without exposing values confirmed historical entries were public client configuration, not private credentials. This automated check does not prove the absence of every possible secret or personal record.
+- All 16 existing tests passed. An independent self-hosted deployment, contributor agreements and logo redistribution rights have not been verified.
+- Keep reviewing new changes before publication; synced updates reach this public repository. Do not add private credentials, user records or private working notes.
+
+### Ongoing owner checklist
+
 1. Confirm the team has the rights to release its original code under MIT; review any contributor or contractor agreements. Confirm logo/media rights separately.
 2. On desktop, connect through **Project settings → Git → GitHub**. On mobile, use **Chat → + → Project → GitHub**, or project Settings → Git. Connecting creates a new private repository; the assistant cannot connect it or check its status.
 3. **Keep the synced repository private during review.** Audit every tracked file, branch and historical commit for secrets, user information, private working documents and unlicensed material. The managed workspace currently tracks `.env`; its current values are publishable configuration, but neither that fact nor an ignore rule proves the rest of history is safe.

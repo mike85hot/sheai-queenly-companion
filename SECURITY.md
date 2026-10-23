@@ -4,7 +4,7 @@ SheAI handles potentially sensitive location, contact and health information. So
 
 ## Reporting
 
-Use the repository's **Security → Report a vulnerability** option if maintainers have enabled GitHub private vulnerability reporting. Never post an exploit, active trip token, credential or personal record in a public issue.
+GitHub private vulnerability reporting was enabled on 23 October 2026. Use [Security → Report a vulnerability](https://github.com/mike85hot/sheai-queenly-companion/security/advisories/new). Never post an exploit, active trip token, credential or personal record in a public issue.
 
 If private reporting is unavailable, ask maintainers to enable a private channel through a public issue containing only the request, not the vulnerability. A dedicated security email and response SLA have not yet been established. Maintainers must enable a working private reporting channel before public release.
 
