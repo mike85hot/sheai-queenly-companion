@@ -19,7 +19,7 @@ SheAI brings practical safety tools, consent-based journey sharing and AI-assist
 | AI assistants | Safety/travel, meals and fitness/cycle guidance with database-enforced credit accounting |
 | Accounts | Sign-in and emergency profile details |
 
-**Not implemented:** automatic SMS dispatch, predictive risk scoring, crime/incident mapping, backup hotel booking, offline service-worker support and paid checkout/subscription integration. Marketing prices do not establish payment functionality. The app does not contact emergency responders automatically, and browser tracking is not guaranteed when a device is locked, offline or suspends the page. AI guidance is not medical advice or an emergency service.
+**Not implemented:** automatic SMS dispatch, AI-based or crime-data risk prediction, crime/incident mapping, hotel listing or booking, offline service-worker support and paid checkout/subscription integration. Marketing prices do not establish payment functionality. The app does not contact emergency responders automatically, and browser tracking is not guaranteed when a device is locked, offline or suspends the page. AI guidance is not medical advice or an emergency service.
 
 ## Development
 

@@ -17,3 +17,5 @@
 - Shared trips are read only through `get_shared_trip(token)`; never add an anon policy on `trips`.
 - Emergency contacts live in a source-linked country directory; require country confirmation before dialing and never infer physical location from language alone.
 - Journey sharing uses shared message helpers for SMS and WhatsApp; messages are user-sent, never represented as automatic dispatch.
+- The journey check stays rule-based contextual guidance (time, transport, company, battery); never present it as crime-data or AI risk prediction, and keep that distinction in README/UNICEF docs.
+- Nearby lodging comes from public OpenStreetMap (Overpass) through `findNearbySafePlaces`; attribute the data and never claim booking capability.
