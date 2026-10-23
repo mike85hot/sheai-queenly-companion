@@ -45,4 +45,4 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) and [the pri
 
 ## Release status
 
-Open-source licensing and documentation are prepared. Public repository publication and release review remain owner actions; see [the release checklist](docs/OPEN_SOURCE_RELEASE.md). A website being public is not the same as a public source repository.
+Public source: [mike85hot/sheai-queenly-companion](https://github.com/mike85hot/sheai-queenly-companion), published on 23 October 2026 under MIT. The initial history-wide credential scan found only public client configuration warnings, and all 16 existing tests passed. This is not a security certification or an independently validated self-hosted deployment. Contributor/media rights and UNICEF applicant eligibility still require owner confirmation; see [the release checklist](docs/OPEN_SOURCE_RELEASE.md).
