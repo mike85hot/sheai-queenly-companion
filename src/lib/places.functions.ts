@@ -55,8 +55,8 @@ export const findNearbySafePlaces = createServerFn({ method: "POST" })
               lng,
               kind: tags.tourism ?? "lodging",
               distance_m: Math.round(haversine(data.lat, data.lng, lat, lng)),
-              tel: tags.phone ?? tags["contact:phone"] ?? null,
-              website: tags.website ?? tags["contact:website"] ?? null,
+              tel: tags["phone"] ?? tags["contact:phone"] ?? null,
+              website: tags["website"] ?? tags["contact:website"] ?? null,
             } satisfies SafePlace;
           })
           .filter((p): p is SafePlace => p != null)
