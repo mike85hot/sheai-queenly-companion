@@ -21,7 +21,9 @@
 
 ## UN program application
 
-The precise UN program and its current rules have not been supplied or verified. Open source alone does not guarantee eligibility, acceptance, endorsement or Digital Public Good status.
+The target is [UNICEF FemTech Ventures' second call](https://www.unicef.org/innovation/FemTechCall), reviewed on 23 October 2026. The official call lists an application deadline of **4 November 2026**, up to **US$100,000** funding and 12 months of technical mentorship. It seeks companies registered in a UNICEF programme country, a functional prototype and commitment to open-source licensing and principles. Women-led startups and founders under 35 are strongly encouraged; the page does not describe those as universal mandatory conditions. SheAI's closest thematic fit is **Pillar 3: Mental wellbeing, safety and protection**. See [the application brief](UNICEF_FEMTECH.md).
+
+Company registration, full applicant eligibility and application-form requirements remain unverified. Open source alone does not guarantee eligibility, acceptance, endorsement or Digital Public Good status.
 
 Check the exact call for: accepted license, public repository requirement, applicant/team eligibility, geography, deadlines, safeguarding/privacy obligations and evidence of a working pilot. Describe automation, predictive risk and offline support as planned, not operational.
 
