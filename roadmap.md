@@ -1,4 +1,7 @@
 # SheAI Roadmap
+- [ ] Open-source release: MIT license, contribution and safety documentation, release checklist
+- [ ] Publish public source repository (requires owner GitHub action and release review)
+- [ ] Verify UN program eligibility (requires exact program link)
 - [x] International free access: verified country emergency selector and WhatsApp journey sharing
 - [x] Phase 1: Auth + emergency profile, 911/hotlines, siren+strobe, Safe Exit Call
 - [x] Phase 2: Trusted contacts (tier limits), Walk Me Home trip watch + share link, Safe Arrival timer, duress codeword
